@@ -9,12 +9,17 @@ function App() {
 
   const isAudioAvailable = file || audioStream
 
+  function resetAudio() {
+    setFile(null)
+    setAudioStream(null)
+  }
+
   return (
     <div className="flex flex-col max-w-[1000px] mx-auto w-full">
       <section className="min-h-screen flex flex-col">
         <Header />
         {isAudioAvailable ? (
-          <FileDisplay />
+          <FileDisplay file={file} audioStream={audioStream} resetAudio={resetAudio} />
         ) : (
         <HomePage setFile={setFile} setAudioStream={setAudioStream} />
         )}
